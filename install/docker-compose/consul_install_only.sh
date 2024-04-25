@@ -34,7 +34,7 @@ acl = {
 }
 EOF
 chmod 777 -R /opt/consul/config
-cat <<EOF > /opt/consul/docker-compose.yaml
+cat <<EOF > /opt/consul/compose.yaml
 version: '3.6'
 services:
   consul:
@@ -60,5 +60,5 @@ networks:
       driver: default
 EOF
 
-echo "请进入/opt/consul目录执行 docker-compose up -d 启动consul"
+echo "请进入/opt/consul目录执行 docker compose -f compose.yaml -p consul up -d 启动consul"
 echo "consul的管理员token是: $uuid"

@@ -2,7 +2,7 @@
 tsspath="/opt/tensuns"
 mkdir -p $tsspath
 
-cat <<EOF > $tsspath/docker-compose.yaml
+cat <<EOF > $tsspath/compose.yaml
 version: '3.6'
 services:
   flask-consul:
@@ -43,7 +43,7 @@ networks:
 EOF
 
 
-echo -e "\n编辑：$tsspath/docker-compose.yaml，修改3个环境变量：\n\033[31;1mconsul_token\033[0m：consul的登录token（安装consul时生成的UUID）\n\033[31;1mconsul_url\033[0m：consul的URL(http开头，/v1要保留)\n\033[31;1madmin_passwd\033[0m：登录后羿运维平台admin用户的密码\n"
-echo "启动：cd $tsspath && docker-compose up -d"
+echo -e "\n编辑：$tsspath/compose.yaml，修改3个环境变量：\n\033[31;1mconsul_token\033[0m：consul的登录token（安装consul时生成的UUID）\n\033[31;1mconsul_url\033[0m：consul的URL(http开头，/v1要保留)\n\033[31;1madmin_passwd\033[0m：登录后羿运维平台admin用户的密码\n"
+echo "启动：cd $tsspath && docker compose -f compose.yaml -p tensuns up -d"
 echo -e "\n请使用浏览器访问 http://{你的IP}:1026 并登录使用\n"
 echo -e "\033[31;1mhttp://`ip route get 1.2.3.4 | awk '{print $NF}'|head -1`:1026\033[0m\n"
