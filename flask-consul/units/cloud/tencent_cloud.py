@@ -143,7 +143,7 @@ def ecs(account,region,isextip=False):
                 'ostype': 'windows' if 'win' in i.OsName.lower() else 'linux',
                 'status': i.InstanceState, 'region': region, 'ip':i.PrivateIpAddresses[0],
                 'cpu': f'{i.CPU}核','mem': f'{i.Memory}GB',
-                'exp': '按量' if i.ExpiredTime is None else i.ExpiredTime.split('T')[0]
+                'exp': '按量' if i.ExpiredTime is None else i.ExpiredTime.split('T')[0],'ecstag': [] if i.Tags is None else i.Tags
                 } for i in ecs_list}
             offset = offset + 100
             ecs_dict.update(ecs_dict_temp)
@@ -255,7 +255,7 @@ def redis(account,region):
                              'region':region,
                              'group':group_dict.get(str(i.ProjectId),'无'),
                              'status': '运行中' if i.Status == 2 else '非运行中',
-                             'itype':{6:'主从',7:'集群',8:'主从',9:'集群'}.get(i.Type,i.Type),
+                             'itype':{2:'主从', 3:'主从', 4:'集群', 5:'单机', 6:'主从', 7:'集群', 8:'主从', 9:'集群', 15:'主从', 16:'集群', 17:'主从', 18:'集群'}.get(i.Type,i.Type),
                              'ver':i.CurrentRedisVersion,
                              'exp': '按量' if i.DeadlineTime == "0000-00-00 00:00:00" else i.DeadlineTime.split(' ')[0],
                              'mem':f"{i.Size}MB",

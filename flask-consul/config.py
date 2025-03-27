@@ -5,10 +5,26 @@ consul_url = os.environ.get('consul_url','http://10.5.148.67:8500/v1')
 admin_passwd = os.environ.get('admin_passwd','123456')
 log_level = os.environ.get('log_level','INFO')
 
-vendors = {'alicloud': '阿里云','tencent_cloud': '腾讯云','huaweicloud': '华为云'}
+vendors = {'alicloud': '阿里云','tencent_cloud': '腾讯云','huaweicloud': '华为云', 'awscloud': 'AWS云'}
+# https://aws.amazon.com/cn/about-aws/global-infrastructure/regional-product-services
 regions = {
+    "awscloud":{
+        "none": "无",
+        "us-east-1": "美国东部（弗吉尼亚州北部）",
+        "us-west-1": "美国西部（北加利福尼亚）",
+        "ap-east-1": "亚太地区（香港）",
+        "ap-south-1": "亚太地区（孟买）",
+        "ap-northeast-2": "亚太地区（首尔）",
+        "ap-southeast-1": "亚太地区（新加坡）",
+        "ap-southeast-3": "亚太地区（雅加达）",
+        "ap-northeast-1": "亚太地区（东京）",
+        "eu-central-1": "欧洲（法兰克福）",
+        "eu-west-2": "欧洲（伦敦）",
+        "eu-west-3": "欧洲（巴黎）",
+    },
     "huaweicloud": {
         "none": "无",
+        "cn-north-219": "华北-北京金融二",
         "cn-east-3": "华东-上海一",
         "cn-east-2": "华东-上海二",
         "cn-south-1": "华南-广州",
@@ -36,6 +52,7 @@ regions = {
         "us-east-1": "美国东部1(弗吉尼亚)",
         "us-west-1": "美国(硅谷)",
         "eu-west-1": "英国(伦敦)",
+        "eu-central-1": "德国(法兰克福)",
         "ap-southeast-1": "新加坡",
         "ap-northeast-1": "日本(东京)",
         "ap-south-1": "印度(孟买)",
